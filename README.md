@@ -39,9 +39,13 @@ useful.aspectratio.watch(parent, {
 ```
 
 **id : {string}** - The ID attribute of an element somewhere in the document.
+
 **parent : {DOM node}** - The DOM element around which the functionality is centred.
+
 **ratio : {float}** - The desired aspect ratio of height / width.
+
 **interval : {integer}** - If larger than 0 this is the interval in milliseconds at which the script checks dimensions. The script also checks after every browser resize by default.
+
 **offset : {integer}** - A fudge factor to compensate for small size differences. These are usually due to padding and borders.
 
 ### Using document.querySelectorAll
@@ -61,7 +65,9 @@ useful.css.select({
 ```
 
 **rule : {string}** - The CSS Rule for the intended target(s) of the script.
+
 **handler : {function}** - The public function that starts the script.
+
 **data : {object}** - Name-value pairs with configuration data.
 
 ### Using jQuery
