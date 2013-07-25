@@ -1,16 +1,12 @@
 /*
 	Reference Styling for Scripted Aspect Ratio
 */
-
 @media all {
-
 	@import "compass/css3";
 	@import "compass/utilities";
-
 	/*
 		scripted aspect ratio
 	*/
-
 	section.aspect {
 		@include background(linear-gradient(center top , #FFFFFF 0%, #FFFFFF 1px, #CCCCCC 1px, #FFFFFF 30px, #FFFFFF 100%) repeat scroll 0 0 #FFFFFF);
 		@include box-shadow(0 1px 3px #999);
@@ -21,7 +17,6 @@
 			padding : 15px;
 		}
 	}
-
 }
 @media (min-width: 1200px) {}
 @media (min-width: 980px) and (max-width: 1199px) {}
