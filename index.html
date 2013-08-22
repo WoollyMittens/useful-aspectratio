@@ -22,7 +22,7 @@
 		<section class="example example-left">
 			<article>
 				<h2>Scripted Aspect Ratio</h2>
-				<p>Adjusts the height of the box when the width changes to keep the proportions the same.</p>
+				<p>Keeps the proportions of a box the same regardless of browser size.</p>
 				<p><a class="button downloadButton" href="http://github.com/WoollyMittens/useful-aspectratio" target="_blank">Download (GitHub)</a></p>
 			</article>
 			<aside>
@@ -34,18 +34,21 @@
 						Aspect ratio 16:9
 					</article>
 				</section>
-				<script src="./js/useful.aspectratio.js"></script>
+				<script src="./js/aspectratio.min.js"></script>
 				<script>
 				//<!--
-					useful.css.select({
-						rule : '.aspect',
-						handler : useful.aspectratio.watch,
-						data : {
+					// create new instances of the script
+					var aspectratios = new useful.Instances(
+						document.querySelectorAll('.aspect'),
+						useful.Aspectratio,
+						{
 							'ratio' : 9/16,
 							'interval' : 1000,
 							'offset' : 0 // to correct for padding and borders
 						}
-					});
+					);
+					// wait for the document to load and then start all instances
+					aspectratios.wait();
 				//-->
 				</script>
 				<!-- Cut above this -->
