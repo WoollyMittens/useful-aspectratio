@@ -35,6 +35,8 @@
 			}
 			// initial update
 			this.update();
+			// disable the start function so it can't be started twice
+			this.start = function () {};
 		};
 		this.update = function () {
 			var width, height, corrected;
@@ -49,6 +51,8 @@
 				this.obj.style.height = (corrected - this.cfg.offset) + 'px';
 			}
 		};
+		// go
+		this.start();
 	};
 
 }(window.useful = window.useful || {}));

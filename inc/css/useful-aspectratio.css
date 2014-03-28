@@ -5,6 +5,7 @@
   /*
   	scripted aspect ratio
   */
+  /* line 10, ../../src/scss/useful-aspectratio.scss */
   section.aspect {
     background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(1px, #ffffff), color-stop(1px, #cccccc), color-stop(30px, #ffffff), color-stop(100%, #ffffff)) repeat scroll 0 0 white;
     background: -webkit-linear-gradient(center top, #ffffff 0%, #ffffff 1px, #cccccc 1px, #ffffff 30px, #ffffff 100%) repeat scroll 0 0 white;
@@ -18,6 +19,7 @@
     border-radius: 5px;
     display: block;
   }
+  /* line 16, ../../src/scss/useful-aspectratio.scss */
   section.aspect article {
     padding: 15px;
   }
