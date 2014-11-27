@@ -3,7 +3,6 @@ module.exports = function(grunt) {
 	// components
 	var name = 'aspectratio';
 	var libs = [
-		'../useful-instances/src/js/useful-instances.js',
 		'../useful-polyfills/src/js/useful-polyfills.js'
 	];
 	var mixins = [

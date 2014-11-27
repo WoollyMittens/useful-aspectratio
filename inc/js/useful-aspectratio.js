@@ -1,62 +1,6 @@
 /*
 	Source:
-	van Creij, Maurice (2012). "useful.instances.js: A library of useful functions to ease working with instances of constructors.", version 20121126, http://www.woollymittens.nl/.
-
-	License:
-	This work is licensed under a Creative Commons Attribution 3.0 Unported License.
-*/
-
-// public object
-var useful = useful || {};
-
-(function(){
-
-	// Invoke strict mode
-	"use strict";
-
-	// public functions
-	useful.Instances = function (objs, constructor, cfg) {
-		// properties
-		this.objs = objs;
-		this.constructor = constructor;
-		this.cfg = cfg;
-		this.constructs = [];
-		// starts and stores an instance of the constructor for every element
-		this.start = function () {
-			for (var a = 0, b = this.objs.length; a < b; a += 1) {
-				// store a constructed instance with cloned cfg object
-				this.constructs[a] = new this.constructor(this.objs[a], Object.create(this.cfg));
-			}
-			// disable the start function so it can't be started twice
-			this.start = function () {};
-			// empty the timeout
-			return null;
-		};
-		// returns the constructs
-		this.getAll = function () {
-			return this.constructs;
-		};
-		// returns the object that goes with the element
-		this.getByObject = function (element) {
-			return this.constructs[this.constructs.indexOf(element)];
-		};
-		// returns the object that goes with the index
-		this.getByIndex = function (index) {
-			return this.constructs[index];
-		};
-		this.start();
-	};
-
-	// return as a require.js module
-	if (typeof module !== 'undefined') {
-		exports = module.exports = useful.Instances;
-	}
-
-})();
-
-/*
-	Source:
-	van Creij, Maurice (2012). "useful.polyfills.js: A library of useful polyfills to ease working with HTML5 in legacy environments.", version 20121126, http://www.woollymittens.nl/.
+	van Creij, Maurice (2014). "useful.polyfills.js: A library of useful polyfills to ease working with HTML5 in legacy environments.", version 20141127, http://www.woollymittens.nl/.
 
 	License:
 	This work is licensed under a Creative Commons Attribution 3.0 Unported License.
@@ -335,62 +279,215 @@ var useful = useful || {};
 })();
 
 /*
+
 	Source:
-	van Creij, Maurice (2014). "useful.aspectratio.js: Keeps the proportions of a box the same regardless of browser size.", version 20140828, http://www.woollymittens.nl/.
+
+	van Creij, Maurice (2014). "useful.aspectratio.js: Keeps the proportions of a box the same regardless of browser size.", version 20141127, http://www.woollymittens.nl/.
+
+
 
 	License:
+
 	This work is licensed under a Creative Commons Attribution 3.0 Unported License.
+
 */
 
-// public object
+
+
+// create the constructor if needed
+
 var useful = useful || {};
 
-(function(){
+useful.Aspectratio = useful.Aspectratio || function () {};
 
-	// invoke strict mode
+
+
+// extend the constructor
+
+useful.Aspectratio.prototype.Main = function (parent, cfg) {
+
+	// properties
+
 	"use strict";
 
-	// private functions
-	useful.Aspectratio = function (obj, cfg) {
-		this.obj = obj;
-		this.cfg = cfg;
-		this.start = function () {
-			var context = this;
-			// when the window changes size
-			window.addEventListener('resize', function () {
+	this.parent = parent;
+
+	this.cfg = cfg;
+
+	this.obj = cfg.element;
+
+	// methods
+
+	this.start = function () {
+
+		var context = this;
+
+		// when the window changes size
+
+		window.addEventListener('resize', function () {
+
+			context.update();
+
+		}, false);
+
+		// occasional check
+
+		if (this.cfg.interval > 0) {
+
+			this.cfg.timeout = setInterval(function () {
+
 				context.update();
-			}, false);
-			// occasional check
-			if (this.cfg.interval > 0) {
-				this.cfg.timeout = setInterval(function () {
-					context.update();
-				}, this.cfg.interval);
-			}
-			// initial update
-			this.update();
-			// disable the start function so it can't be started twice
-			this.start = function () {};
-		};
-		this.update = function () {
-			var width, height, corrected;
-			// measure the width of the object
-			width = this.obj.offsetWidth;
-			// measure the height of the object
-			height = this.obj.offsetHeight;
-			corrected = width * this.cfg.ratio;
-			// if the measurements are trustworthy
-			if (width && height && height !== corrected) {
-				// adjust the height
-				this.obj.style.height = (corrected - this.cfg.offset) + 'px';
-			}
-		};
-		// go
-		this.start();
+
+			}, this.cfg.interval);
+
+		}
+
+		// initial update
+
+		this.update();
+
+		// disable the start function so it can't be started twice
+
+		this.start = function () {};
+
 	};
 
-	// return as a require.js module
-	if (typeof module !== 'undefined') {
-		exports = module.exports = useful.Aspectratio;
-	}
+	this.update = function () {
 
-})();
+		var width, height, corrected;
+
+		// measure the width of the object
+
+		width = this.obj.offsetWidth;
+
+		// measure the height of the object
+
+		height = this.obj.offsetHeight;
+
+		corrected = width * this.cfg.ratio;
+
+		// if the measurements are trustworthy
+
+		if (width && height && height !== corrected) {
+
+			// adjust the height
+
+			this.obj.style.height = (corrected - this.cfg.offset) + 'px';
+
+		}
+
+	};
+
+	// go
+
+	this.start();
+
+	return this;
+
+};
+
+
+
+// return as a require.js module
+
+if (typeof module !== 'undefined') {
+
+	exports = module.exports = useful.Aspectratio.Main;
+
+}
+
+
+/*
+
+	Source:
+
+	van Creij, Maurice (2014). "useful.range.js: Range input element", version 20141127, http://www.woollymittens.nl/.
+
+
+
+	License:
+
+	This work is licensed under a Creative Commons Attribution 3.0 Unported License.
+
+*/
+
+
+
+// create the constructor if needed
+
+var useful = useful || {};
+
+useful.Aspectratio = useful.Aspectratio || function () {};
+
+
+
+// extend the constructor
+
+useful.Aspectratio.prototype.init = function (cfg) {
+
+	// properties
+
+	"use strict";
+
+	this.instances = [];
+
+	// methods
+
+	this.each = function (elements, cfg) {
+
+		var _cfg, instance;
+
+		// for all elements
+
+		for (var a = 0, b = elements.length; a < b; a += 1) {
+
+			// clone the configuration
+
+			_cfg = Object.create(cfg);
+
+			// insert the current element
+
+			_cfg.element = elements[a];
+
+			// start a new instance of the object
+
+			this.instances.push(new this.Main(this, _cfg));
+
+		}
+
+	};
+
+	this.update = function () {
+
+		// for every instance
+
+		for (var a = 0, b = this.instances.length; a < b; a += 1) {
+
+			// trigger the update
+
+			this.instances[a].update();
+
+		}
+
+	};
+
+	// go
+
+	this.each(cfg.elements, cfg);
+
+	this.init = function () {};
+
+	return this;
+
+};
+
+
+
+// return as a require.js module
+
+if (typeof module !== 'undefined') {
+
+	exports = module.exports = useful.Aspectratio;
+
+}
+

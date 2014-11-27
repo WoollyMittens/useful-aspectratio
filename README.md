@@ -28,10 +28,9 @@ To enable the use of HTML5 tags in Internet Explorer 8 and lower, include *html5
 
 ## How to start the script
 
-This is the safest way of starting the script, but allows for only one target element at a time.
-
 ```javascript
-var aspectratio = new useful.Aspectratio( document.getElementById('id'), {
+var aspectratios = new useful.Aspectratio().init({
+	'elements' : document.querySelectorAll('.aspect'),
 	'ratio' : 9/16,
 	'interval' : 1000,
 	'offset' : 0
@@ -46,44 +45,12 @@ var aspectratio = new useful.Aspectratio( document.getElementById('id'), {
 
 **offset : {integer}** - A fudge factor to compensate for small size differences. These are usually due to padding and borders.
 
-### Using document.querySelectorAll
-
-This method allows CSS Rules to be used to apply the script to one or more nodes at the same time.
-
-```javascript
-var aspectratios = new useful.Instances(
-	document.querySelectorAll('.aspect'),
-	useful.Aspectratio,
-	{
-		'ratio' : 9/16,
-		'interval' : 1000,
-		'offset' : 0
-	}
-);
-```
-
-### Using jQuery
-
-This method is similar to the previous one, but uses jQuery for processing the CSS rule and cloning the settings.
-
-```javascript
-var aspectratios = [];
-$('.aspect').each(function (index, element) {
-	aspectratios[index] = new useful.Aspectratio( element, {
-		'ratio' : 9/16,
-		'interval' : 1000,
-		'offset' : 0
-	});
-	Aspectratios[index].start();
-});
-```
-
 ## How to control the script
 
 ### Update
 
 ```javascript
-aspectratio.update();
+aspectratios.update();
 ```
 
 Adjust the aspect ratio.

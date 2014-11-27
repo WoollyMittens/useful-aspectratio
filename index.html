@@ -38,15 +38,12 @@
 				<script>
 				//<!--
 					// create new instances of the script
-					var aspectratios = new useful.Instances(
-						document.querySelectorAll('.aspect'),
-						useful.Aspectratio,
-						{
-							'ratio' : 9/16,
-							'interval' : 1000,
-							'offset' : 0 // to correct for padding and borders
-						}
-					);
+					var aspectratios = new useful.Aspectratio().init({
+						'elements' : document.querySelectorAll('.aspect'),
+						'ratio' : 9/16,
+						'interval' : 1000,
+						'offset' : 0 // to correct for padding and borders
+					});
 				//-->
 				</script>
 				<!-- Cut above this -->
