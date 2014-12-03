@@ -11,9 +11,10 @@ var useful = useful || {};
 useful.Aspectratio = useful.Aspectratio || function () {};
 
 // extend the constructor
-useful.Aspectratio.prototype.Main = function (parent, cfg) {
+useful.Aspectratio.prototype.Main = function (cfg, parent) {
 	// properties
 	"use strict";
+	console.log('cfg.element', cfg.element);
 	this.parent = parent;
 	this.cfg = cfg;
 	this.obj = cfg.element;
