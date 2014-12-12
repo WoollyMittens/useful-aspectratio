@@ -29,9 +29,14 @@
 
 				<!-- Cut below this -->
 				<style>@import url("./inc/css/useful-aspectratio.css");</style>
-				<section class="aspect">
+				<section class="aspect" data-ratio="16:9">
 					<article>
 						Aspect ratio 16:9
+					</article>
+				</section>
+				<section class="aspect" data-ratio="4:3">
+					<article>
+						Aspect ratio 4:3
 					</article>
 				</section>
 				<script src="./inc/js/useful-aspectratio.js"></script>
@@ -40,7 +45,7 @@
 					// create new instances of the script
 					var aspectratios = new useful.Aspectratio().init({
 						'elements' : document.querySelectorAll('.aspect'),
-						'ratio' : 9/16,
+						'ratio' : '16:9',
 						'interval' : 1000,
 						'offset' : 0 // to correct for padding and borders
 					});

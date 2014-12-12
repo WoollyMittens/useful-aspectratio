@@ -9,8 +9,9 @@ section.aspect {
   border: solid 1px #333;
   border-radius: 5px;
   display: block;
+  margin-bottom: 2em;
 }
-/* line 12, ../../src/scss/useful-aspectratio.scss */
+/* line 13, ../../src/scss/useful-aspectratio.scss */
 section.aspect article {
   padding: 15px;
 }

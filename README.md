@@ -28,10 +28,16 @@ To enable the use of HTML5 tags in Internet Explorer 8 and lower, include *html5
 
 ## How to start the script
 
+```html
+<section class="aspect" data-ratio="4:3"></div>
+```
+
+**data-ratio** - The desired aspect ratio in the format "width:heigth".
+
 ```javascript
 var aspectratios = new useful.Aspectratio().init({
 	'elements' : document.querySelectorAll('.aspect'),
-	'ratio' : 9/16,
+	'ratio' : '16:9',
 	'interval' : 1000,
 	'offset' : 0
 });
@@ -39,7 +45,7 @@ var aspectratios = new useful.Aspectratio().init({
 
 **id : {string}** - The ID attribute of an element somewhere in the document.
 
-**ratio : {float}** - The desired aspect ratio of height / width.
+**ratio : {string}** - The desired aspect ratio in the format "width:heigth".
 
 **interval : {integer}** - If larger than 0 this is the interval in milliseconds at which the script checks dimensions. The script also checks after every browser resize by default.
 

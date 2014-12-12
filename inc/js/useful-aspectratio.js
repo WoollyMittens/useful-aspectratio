@@ -288,97 +288,71 @@ var useful = useful || {};
 
 // create the constructor if needed
 var useful = useful || {};
-useful.Aspectratio = useful.Aspectratio || function () {};
 
 // extend the constructor
-useful.Aspectratio.prototype.Main = function (cfg, parent) {
+useful.Aspectratio = function () {
 	// properties
 	"use strict";
-	console.log('cfg.element', cfg.element);
-	this.parent = parent;
-	this.cfg = cfg;
-	this.obj = cfg.element;
 	// methods
-	this.start = function () {
-		var context = this;
+	this.init = function (config) {
+		// store the config
+		this.config = config;
+		this.elements = config.elements || [config.element];
+		// pre-calculate and  store the ratios
+		this.precalculate();
 		// when the window changes size
-		window.addEventListener('resize', function () {
-			context.update();
-		}, false);
+		this.updateOnResize();
 		// occasional check
-		if (this.cfg.interval > 0) {
-			this.cfg.timeout = setInterval(function () {
-				context.update();
-			}, this.cfg.interval);
-		}
+		this.updateOnDelay();
 		// initial update
 		this.update();
-		// disable the start function so it can't be started twice
-		this.start = function () {};
+		// return the object
+		return this;
+	};
+	this.precalculate = function () {
+		var ratioAttribute;
+		// pre-calculate and  store the ratios
+		this.ratios = [];
+		for (var a = 0, b = this.elements.length; a < b; a += 1) {
+			ratioAttribute = this.elements[a].getAttribute('data-ratio') || this.config.ratio;
+			ratioAttribute = ratioAttribute.split(':');
+			this.ratios[a] = parseInt(ratioAttribute[1]) / parseInt(ratioAttribute[0]);
+		}
 	};
 	this.update = function () {
-		var width, height, corrected;
-		// measure the width of the object
-		width = this.obj.offsetWidth;
-		// measure the height of the object
-		height = this.obj.offsetHeight;
-		corrected = width * this.cfg.ratio;
-		// if the measurements are trustworthy
-		if (width && height && height !== corrected) {
-			// adjust the height
-			this.obj.style.height = (corrected - this.cfg.offset) + 'px';
+		var width, height, ratio, corrected;
+		// adjust all the elements
+		for (var a = 0, b = this.elements.length; a < b; a += 1) {
+			// measure the width of the elementect
+			width = this.elements[a].offsetWidth;
+			// measure the height of the elementect
+			height = this.elements[a].offsetHeight;
+			corrected = width * this.ratios[a];
+			// if the measurements are trustworthy
+			if (width && height && height !== corrected) {
+				// adjust the height
+				this.elements[a].style.height = (corrected - this.config.offset) + 'px';
+			}
 		}
 	};
-	// go
-	this.start();
-	return this;
-};
-
-// return as a require.js module
-if (typeof module !== 'undefined') {
-	exports = module.exports = useful.Aspectratio.Main;
-}
-
-/*
-	Source:
-	van Creij, Maurice (2014). "useful.aspectratio.js: Keeps the proportions of a box the same regardless of browser size.", version 20141127, http://www.woollymittens.nl/.
-
-	License:
-	This work is licensed under a Creative Commons Attribution 3.0 Unported License.
-*/
-
-// create the constructor if needed
-var useful = useful || {};
-useful.Aspectratio = useful.Aspectratio || function () {};
-
-// extend the constructor
-useful.Aspectratio.prototype.init = function (cfg) {
-	// properties
-	"use strict";
-	// methods
-	this.only = function (cfg) {
-		// start an instance of the script
-		return new this.Main(cfg, this);
+	// events
+	this.updateOnResize = function () {
+		var _this = this;
+		// when the window changes size
+		window.addEventListener('resize', function () {
+			_this.update();
+		}, false);
 	};
-	this.each = function (cfg) {
-		var _cfg, instances = [];
-		// for all element
-		for (var a = 0, b = cfg.elements.length; a < b; a += 1) {
-			// clone the cfguration
-			_cfg = Object.create(cfg);
-			// insert the current element
-			_cfg.element = cfg.elements[a];
-			// delete the list of elements from the clone
-			delete _cfg.elements;
-			// start a new instance of the object
-			console.log('_cfg.element', _cfg.element);
-			instances[a] = new this.Main(_cfg, this);
+	this.updateOnDelay = function () {
+		var _this = this;
+		// if wanted
+		if (this.config.interval > 0) {
+			// occasional check
+			this.config.timeout = setInterval(function () {
+				_this.update();
+			}, this.config.interval);
 		}
-		// return the instances
-		return instances;
 	};
-	// return a single or multiple instances of the script
-	return (cfg.elements) ? this.each(cfg) : this.only(cfg);
 };
 
 // return as a require.js module
