@@ -11,9 +11,13 @@ var useful = useful || {};
 
 // extend the constructor
 useful.Aspectratio = function () {
-	// properties
+
+	// PROPERTIES
+
 	"use strict";
-	// methods
+
+	// METHODS
+
 	this.init = function (config) {
 		// store the config
 		this.config = config;
@@ -29,6 +33,7 @@ useful.Aspectratio = function () {
 		// return the object
 		return this;
 	};
+
 	this.precalculate = function () {
 		var ratioAttribute;
 		// pre-calculate and  store the ratios
@@ -39,6 +44,7 @@ useful.Aspectratio = function () {
 			this.ratios[a] = parseInt(ratioAttribute[1]) / parseInt(ratioAttribute[0]);
 		}
 	};
+
 	this.update = function () {
 		var width, height, ratio, corrected;
 		// adjust all the elements
@@ -55,7 +61,9 @@ useful.Aspectratio = function () {
 			}
 		}
 	};
-	// events
+
+	// EVENTS
+
 	this.updateOnResize = function () {
 		var _this = this;
 		// when the window changes size
@@ -63,6 +71,7 @@ useful.Aspectratio = function () {
 			_this.update();
 		}, false);
 	};
+
 	this.updateOnDelay = function () {
 		var _this = this;
 		// if wanted
@@ -73,6 +82,7 @@ useful.Aspectratio = function () {
 			}, this.config.interval);
 		}
 	};
+
 };
 
 // return as a require.js module
