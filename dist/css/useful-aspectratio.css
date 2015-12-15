@@ -1,0 +1,27 @@
+/*
+	Reference Styling for Scripted Aspect Ratio
+*/
+section.aspect {
+  /* START: cosmetic, safe to remove */
+  background: linear-gradient(center top, #FFFFFF 0%, #FFFFFF 1px, #CCCCCC 1px, #FFFFFF 30px, #FFFFFF 100%) repeat scroll 0 0 #FFFFFF;
+  box-shadow: 0 1px 3px #999;
+  border: solid 1px #333;
+  border-radius: 5px;
+  overflow: hidden;
+  display: block;
+  margin-bottom: 2em;
+  /* END: cosmetic, safe to remove */ }
+  section.aspect article {
+    padding: 15px; }
+  section.aspect.aspect-16x9,
+  section.aspect.aspect-4x3 {
+    position: relative; }
+    section.aspect.aspect-16x9 > *,
+    section.aspect.aspect-4x3 > * {
+      position: absolute;
+      width: 100%;
+      height: 100%; }
+  section.aspect.aspect-16x9 {
+    padding-bottom: 56.25%; }
+  section.aspect.aspect-4x3 {
+    padding-bottom: 75%; }
