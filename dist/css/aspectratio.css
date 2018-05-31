@@ -1,8 +1,31 @@
 /*
-	Reference Styling for Scripted Aspect Ratio
+Constants
+*/
+/*
+Hides text in the margin
+*/
+/*
+Turns a button into an icon
+*/
+/*
+Centres a graphic or glyph inside an icon
+*/
+/*
+Offers both the pixel and rem value of a single property
+*/
+/*
+Offers both the pixel and rem values of a shorthand property
+*/
+/*
+Offers the text size as both the pixel and rem value
+*/
+/*
+Adds vendor prefixed to a property
+*/
+/*
+Applies the "clearfix" hack to a container with floating content
 */
 section.aspect {
-  /* START: cosmetic, safe to remove */
   background: linear-gradient(center top, #FFFFFF 0%, #FFFFFF 1px, #CCCCCC 1px, #FFFFFF 30px, #FFFFFF 100%) repeat scroll 0 0 #FFFFFF;
   -webkit-box-shadow: 0 1px 3px #999;
   box-shadow: 0 1px 3px #999;
@@ -10,10 +33,13 @@ section.aspect {
   border-radius: 5px;
   overflow: hidden;
   display: block;
-  margin-bottom: 2em;
-  /* END: cosmetic, safe to remove */ }
+  margin-bottom: 2em; }
   section.aspect article {
     padding: 15px; }
+
+section.aspect {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
   section.aspect.aspect-16x9, section.aspect.aspect-4x3 {
     position: relative; }
     section.aspect.aspect-16x9 > *, section.aspect.aspect-4x3 > * {

@@ -2,7 +2,8 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<title>useful-aspectratio.js: Scripted Aspect Ratio</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>aspectratio.js: Scripted Aspect Ratio</title>
 		<style>
 			html { font-family:Sans-Serif; font-size:75%; height:100%; }
 			body { _height:100%; line-height:180%; margin:0; min-height:100%; padding:1%; }
@@ -11,12 +12,6 @@
 			.example-left > article, .example-left > aside { width:48%; padding:1%; float:left; }
 			.example-right > article, .example-right > aside { width:48%; padding:1%; float:right; }
 		</style>
-		<!--[if lte IE 9]>
-			<meta http-equiv="imagetoolbar" content="no"/>
-			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
-		<![endif]-->
 	</head>
 	<body>
 		<section class="example example-left">
@@ -39,7 +34,7 @@
 
 				<h3>Scripted</h3>
 				<p>For types of content that can't scale automatically.</p>
-				<style>@import url("./css/useful-aspectratio.css");</style>
+				<style>@import url("./css/aspectratio.css");</style>
 				<section class="aspect" data-ratio="16:9">
 					<article>
 						<h4>Aspect ratio 16:9</h4>
@@ -52,17 +47,14 @@
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 					</article>
 				</section>
-				<script src="./js/useful-aspectratio.js"></script>
+				<script src="./js/aspectratio.js"></script>
 				<script>
-				//<!--
-					// create new instances of the script
-					var aspectratios = new useful.Aspectratio().init({
+					new Aspectratio({
 						'elements' : document.querySelectorAll('.aspect'),
 						'ratio' : '16:9',
 						'interval' : 1000,
 						'offset' : 0 // to correct for padding and borders
 					});
-				//-->
 				</script>
 				<!-- Cut above this -->
 

@@ -1,4 +1,4 @@
-# useful.aspectratio.js: Scripted Aspect Ratio
+# aspectratio.js: Scripted Aspect Ratio
 
 Adjusts the height of the box when the width changes to keep the proportions the same.
 
@@ -18,14 +18,6 @@ This include can be added to the header or placed inline before the script is in
 <script src="./js/useful-aspectratio.js"></script>
 ```
 
-To enable the use of HTML5 tags in Internet Explorer 8 and lower, include *html5.js*.
-
-```html
-<!--[if lte IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-```
-
 ## How to start the script
 
 ```html
@@ -35,7 +27,7 @@ To enable the use of HTML5 tags in Internet Explorer 8 and lower, include *html5
 **data-ratio** - The desired aspect ratio in the format "width:heigth".
 
 ```javascript
-var aspectratios = new useful.Aspectratio().init({
+var aspectratios = new Aspectratio({
 	'elements' : document.querySelectorAll('.aspect'),
 	'ratio' : '16:9',
 	'interval' : 1000,
