@@ -84,3 +84,7 @@ var Aspectratio = function (config) {
 	this.init(config);
 
 };
+
+// return as a require.js module
+if (typeof define != 'undefined') define(['aspectratio'], function () { return Aspectratio });
+if (typeof module != 'undefined') module.exports = Aspectratio;
