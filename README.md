@@ -9,13 +9,29 @@ Try the <a href="http://www.woollymittens.nl/default.php?url=useful-aspectratio"
 The stylesheet is best included in the header of the document.
 
 ```html
-<link rel="stylesheet" href="./css/useful-aspectratio.css"/>
+<link rel="stylesheet" href="css/useful-aspectratio.css"/>
 ```
 
 This include can be added to the header or placed inline before the script is invoked.
 
 ```html
-<script src="./js/useful-aspectratio.js"></script>
+<script src="js/useful-aspectratio.js"></script>
+```
+
+Or use [Require.js](https://requirejs.org/).
+
+```js
+requirejs([
+	'js/aspectratio.js'
+], function(Aspectratio) {
+	...
+});
+```
+
+Or import into an MVC framework.
+
+```js
+var Aspectratio = require('js/aspectratio.js');
 ```
 
 ## How to start the script
