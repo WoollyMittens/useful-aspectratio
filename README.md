@@ -2,8 +2,6 @@
 
 Adjusts the height of the box when the width changes to keep the proportions the same.
 
-Try the <a href="http://www.woollymittens.nl/default.php?url=useful-aspectratio">demo</a>.
-
 ## How to include the script
 
 The stylesheet is best included in the header of the document.
