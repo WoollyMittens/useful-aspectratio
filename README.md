@@ -1,6 +1,12 @@
 # aspectratio.js: Scripted Aspect Ratio
 
+*DEPRICATION WARNING: the functionality in this script is now part of the CSS web standard [aspect-ratio](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio).*
+
 Adjusts the height of the box when the width changes to keep the proportions the same.
+
+## Example
+
+https://woollymittens.github.io/useful-aspectratio/
 
 ## How to include the script
 
@@ -84,4 +90,4 @@ The following commands are available for development:
 
 ## License
 
-This work is licensed under a [MIT License](https://opensource.org/licenses/MIT). The latest version of this and other scripts by the same author can be found on [Github](https://github.com/WoollyMittens) and at [WoollyMittens.nl](https://www.woollymittens.nl/).
+This work is licensed under a [MIT License](https://opensource.org/licenses/MIT). The latest version of this and other scripts by the same author can be found on [Github](https://github.com/WoollyMittens).
